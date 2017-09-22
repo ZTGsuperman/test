@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success, filed);
+        } else {
+            alert("对不起，您的浏览器不支持html5定位");
+        }
+
+        function success(position) {
+            var x = position.coords.latitude;
+            var y = position.coords.longitude;
+           
+            alert(x+','+y)
+
+        }
+
+
+
+        function filed(error) {
+            switch (error.code) {
+                case 0:
+                    alert("获取位置信息出错！");
+                    break;
+                case 1:
+                    alert("您设置了阻止该页面获取位置信息！");
+                    break;
+                case 2:
+                    alert("浏览器无法确定您的位置！");
+                    break;
+                case 3:
+                    alert("获取位置信息超时！");
+                    break;
+            }
+        }
+
+
+    </script>
+
+
+</body>
+</html>
