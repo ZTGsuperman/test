@@ -1,0 +1,296 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+input,
+textarea {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+textarea {
+  resize: none;
+  overflow: auto;
+}
+em {
+  font-style: normal;
+}
+img {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+span {
+  margin: 0;
+  padding: 0;
+}
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+h1,
+p,
+h2,
+h4,
+h3,
+h5,
+p,
+input,
+label {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+a,
+input {
+  -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+  text-decoration: none;
+}
+img {
+  border: none;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+}
+html {
+  height: 100%;
+  position: relative;
+}
+body {
+  height: 100%;
+  margin: 0;
+  position: relative;
+  background: #f2f2f4;
+  background-size: -cover;
+  font-family: Arial, "微软雅黑";
+  color: #666;
+  -webkit-appearance: none;
+  border-radius: 0;
+  width: 100%;
+}
+#box {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+#box header {
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  height: 5rem;
+}
+#box header .delta {
+  width: 0;
+  height: 0;
+  border: 12rem solid;
+  border-color: #000 transparent transparent transparent;
+  display: block;
+  transform: translateY(-20rem) rotateZ(-135deg);
+}
+#box header .github {
+  display: block;
+  width: 6.66666667rem;
+  height: 0.83333333rem;
+  background: #ec7500;
+  text-align: center;
+  line-height: 0.83333333rem;
+  color: #fff;
+  font-size: 0.56666667rem;
+  box-shadow: 0 0rem 0.5rem 0.08333333rem #c6c6c8;
+  transform: rotateZ(45deg);
+  position: absolute;
+  right: -2rem;
+  top: 1.16666667rem;
+}
+#box .list {
+  height: 100%;
+  perspective: 1000px;
+  position: absolute;
+  z-index: 1;
+}
+#box .list li {
+  width: 12rem;
+  position: absolute;
+  transform-style: preserve-3d;
+  transform: rotateY(180deg);
+  height: 100%;
+}
+#box .list li p {
+  position: absolute;
+  top: 25%;
+  width: 7rem;
+  text-align: center;
+  display: block;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  left: 50%;
+  margin-left: -3.5rem;
+}
+#box .list li p:nth-of-type(2) {
+  background: #fff;
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg) rotateZ(45deg);
+  height: 7rem;
+  transform-origin: center center;
+}
+#box .list li p img {
+  width: 7rem;
+  height: 12rem;
+}
+#box .list li p .product {
+  transform: rotateZ(-45deg);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0rem;
+  color: #000;
+  text-align: center;
+  padding: 0.83333333rem 0 0 1.4rem;
+  box-sizing: padding-box;
+}
+#box .list li p .product span {
+  font-size: 0.23333333rem;
+  display: block;
+  width: 80%;
+  text-align: left;
+}
+#box .list li p .product span em {
+  color: #2b89b4;
+}
+#box .list li p .link {
+  position: absolute;
+  bottom: 2.5rem;
+  font-size: 0.46666667rem;
+  display: block;
+  width: 2.5rem;
+  height: 0.83333333rem;
+  text-align: center;
+  line-height: 1rem;
+  color: #000;
+  border: 0.03333333rem solid #000000;
+  left: 50%;
+  margin-left: -1.25rem;
+  margin-top: 0.66666667rem;
+}
+#box .list li .weather {
+  height: 12rem;
+  perspective: 1000px;
+  backface-visibility: hidden;
+  transition: 1s;
+}
+#box .list li .weather img {
+  position: absolute;
+  width: 5rem;
+  top: 0;
+  left: 0;
+  height: auto;
+}
+#box .list li .weather .img1 {
+  transform: rotateY(8deg) rotateX(30deg) rotateZ(-40deg) translateX(2.5rem);
+}
+#box .list li .weather .img2 {
+  transform: rotateY(8deg) rotateX(32deg) rotateZ(-40deg) translateX(-2.16666667rem) translateZ(0.16666667rem) translateY(2.5rem);
+  width: 3.6rem;
+  height: 7rem;
+  box-shadow: -3rem 2rem 2.3rem -1rem #3d3c3c;
+}
+#box .list .weather_word {
+  width: 6.66666667rem;
+  height: 6.66666667rem;
+  transform: rotateZ(45deg) translateZ(100px) scale(0);
+  margin: 6rem auto 0;
+  background: #fff;
+  position: relative;
+  transition: 1s;
+}
+#box .list .weather_word p {
+  width: 100%;
+  height: 100%;
+  transform: rotateZ(-45deg);
+  position: absolute;
+  top: 0.8rem;
+  left: 5rem;
+}
+#box .list .weather_word span {
+  color: #000;
+  font-size: 0.33333333rem;
+  display: block;
+  text-align: left;
+}
+#box .list .weather_word span em {
+  color: #2b89b4;
+}
+footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  height: 5rem;
+  z-index: 2;
+}
+#menu {
+  width: 1.66666667rem;
+  height: 1.66666667rem;
+  position: absolute;
+  right: 0.33333333rem;
+  bottom: 0.33333333rem;
+}
+#menu_list {
+  height: 1rem;
+  width: 1rem;
+  position: relative;
+  margin: 0.16666667rem;
+}
+#menu_list a {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+#menu_list a img {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 0.5rem;
+}
+#home {
+  width: 1.66666667rem;
+  height: 1.66666667rem;
+  background: url(../images/nav/home.png) no-repeat;
+  border-radius: 0.83333333rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: 1s;
+}
+footer .delta {
+  width: 0;
+  height: 0;
+  border: 12rem solid;
+  border-color: transparent transparent #000 transparent;
+  display: block;
+  transform: translateY(1rem) translateX(-13.33333333rem) rotateZ(-135deg);
+}
+footer .bottom {
+  position: relative;
+}
+footer .myName {
+  width: 2.66666667rem;
+  height: 2.66666667rem;
+  border: #cccccc solid 0.06666667rem;
+  transform: rotate(45deg);
+  display: block;
+  text-align: center;
+  line-height: 2.66666667rem;
+  position: absolute;
+  top: 0.66666667rem;
+  left: 0.66666667rem;
+}
+footer .myName em {
+  transform: rotate(-45deg);
+  display: block;
+  color: yellow;
+  font-size: 1.16666667rem;
+  font-weight: bold;
+}

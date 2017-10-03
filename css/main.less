@@ -1,0 +1,102 @@
+﻿@r:60rem;
+
+
+*{margin:0;padding:0;}
+input,textarea{margin:0;padding:0;border:none; outline:none;}
+textarea{ resize:none; overflow:auto;}
+em{ font-style:normal;}
+img{border:0;margin:0;padding:0}
+span{margin:0;
+        padding:0}
+ul,ol{margin:0;padding:0; list-style:none;}
+h1,p,h2,h4,h3,h5,p,input,label{margin:0;padding:0; font-weight:normal;}
+a,input{-webkit-tap-highlight-color:rgba(255,0,0,0);text-decoration:none}
+img{ border:none; vertical-align:top;margin:0;padding:0;}
+html{height:100%;position:relative;}
+body{height:100%;margin:0;position:relative; 
+     background:#f2f2f4;
+     background-size:-cover;
+     font-family:Arial,"微软雅黑";color:#666;
+      -webkit-appearance: none;   
+            border-radius: 0;width:100%;
+          
+}
+
+
+#box{width:100%;height:100%;position:relative}
+#box header{width:100%;position:fixed;z-index:2;height:300/@r}
+
+#box header .delta{width:0;height:0;border:12rem solid;border-color:#000 transparent transparent transparent;display:block;
+                   transform:translateY(-20rem) rotateZ(-135deg)
+}
+#box header .github{display:block;width:400/@r;height:50/@r;background:#ec7500;text-align:center;line-height:50/@r;
+                    color:#fff;font-size:34/@r;box-shadow:0 0/@r 30/@r 5/@r #c6c6c8;transform:rotateZ(45deg);position:absolute;
+                    right:-120/@r;top:70/@r
+}
+
+#box .list{height:100%;perspective:1000px;position:absolute;z-index:1}
+#box .list li{width:12rem;position:absolute;transform-style:preserve-3d;
+          transform:rotateY(180deg);height:100%;
+}
+#box  .list li p{ position:absolute;top:25%;width:7rem;text-align:center;display:block;
+            backface-visibility:hidden;transform-style:preserve-3d;left:50%; 
+            margin-left:-3.5rem;
+}
+#box  .list li p:nth-of-type(2){  background: #fff;
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg) rotateZ(45deg);
+            height:7rem;
+            transform-origin:center center
+      }
+
+#box  .list li p img{width:7rem;height:12rem;}
+#box  .list li p .product{transform:rotateZ(-45deg);position:absolute;width:100%;height:100%;
+                top:0;left:0/@r;color:#000;text-align:center;padding:50/@r 0 0 84/@r;box-sizing:padding-box;
+      }
+#box  .list li p .product span{font-size:14/@r;display:block;width:80%;text-align:left}
+#box  .list li p .product span em{color:#2b89b4}
+#box  .list li p .link{position:absolute;bottom:150/@r;font-size:28/@r;display:block;width:150/@r;height:50/@r;
+                 text-align:center;line-height:60/@r;color:#000;border:2/@r solid #000;left:50%;margin-left:-75/@r;
+                 margin-top:40/@r
+      }
+#box .list li .weather{ height:12rem;perspective:1000px; backface-visibility:hidden;transition:1s}
+#box .list li .weather img{position:absolute;width:5rem;top:0;left:0;height:auto}
+#box .list li .weather .img1{ transform:rotateY(8deg) rotateX(30deg) rotateZ(-40deg) translateX(150/@r);}
+#box .list li .weather .img2{ transform:rotateY(8deg) rotateX(32deg) rotateZ(-40deg) translateX(-130/@r) translateZ(10/@r)
+                        translateY(150/@r); 
+                        width:3.6rem;height:7rem;box-shadow:-3rem 2rem 2.3rem -1rem #3d3c3c;
+}
+
+#box .list .weather_word {width:400/@r;height:400/@r;transform:rotateZ(45deg) translateZ(100px) scale(0);margin:360/@r auto 0;background:#fff;
+                    position:relative;transition:1s
+}
+
+#box .list .weather_word p{width:100%;height:100%;transform:rotateZ(-45deg);position:absolute;top:0.8rem;left:5rem}
+#box .list .weather_word span{color:#000;font-size:20/@r;display:block;text-align:left;}
+#box .list .weather_word span em{color:#2b89b4 }
+
+
+footer{position:fixed;width:100%;bottom:0;height:300/@r;z-index:2}
+
+#menu{width:100/@r;height:100/@r; position:absolute;right:20/@r; bottom:20/@r; }
+#menu_list{height:60/@r;width:60/@r; position:relative;margin:10/@r; }
+#menu_list a{position:absolute;left:0;top:0;}
+#menu_list a img{height:60/@r;width:60/@r;border-radius:30/@r;}
+#home{width:100/@r;height:100/@r;background:url(../images/nav/home.png) no-repeat; border-radius:50/@r; 
+      position:absolute; left:0;top:0;transition:1s
+
+}
+footer .delta{width:0;height:0;border:12rem solid;border-color:transparent transparent #000 transparent;display:block;
+                transform:translateY(1rem) translateX(-800/@r) rotateZ(-135deg)
+}
+footer .bottom{position:relative}
+footer .myName{width:160/@r;height:160/@r;border:#ccc solid 4/@r;transform:rotate(45deg); display:block;
+                 text-align:center;line-height:160/@r;position:absolute;top:40/@r;left:40/@r
+}
+footer .myName em{ transform:rotate(-45deg);display:block;color:yellow;font-size:70/@r;
+                   font-weight:bold
+}
+
+
+
+
