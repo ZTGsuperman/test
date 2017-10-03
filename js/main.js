@@ -29,6 +29,7 @@ mv.tool.autoChange = function (obj, dir, now) {
 
     var num = now;
     var num2 = now;
+    var off = true;
     var offset = {
         x: 'offsetWidth',
         y: 'offsetHeight',
@@ -47,21 +48,26 @@ mv.tool.autoChange = function (obj, dir, now) {
             el[0].style.transition = 'none';
             css(el[0], translate[dir], length * moveDis);
             num = 0;
+            off = true;
         } else {
             num++;
             el[0].style.transition = '1s';
         }
         num2++;
-        obj.style.transition = '0.6s';
         css(obj, translate[dir], -num2 * moveDis);
-        obj.addEventListener('webkitTransitionEnd', function () {
-            if (num === 0) {
-                obj.style.transition = '0s';
-                css(el[0], translate[dir], 0);
-                css(obj, translate[dir], 0);
-                num2 = 0
-            }
-        })
+        obj.style.transition = '0.6s';
+        if (num === 0) {
+            obj.addEventListener('webkitTransitionEnd', function () {
+                if (off) {
+                    off = false;
+                    console.log(num)
+                    obj.style.transition = '0s';
+                    css(el[0], translate[dir], 0);
+                    css(obj, translate[dir], 0);
+                    num2 = 0;
+                }
+            })
+        }
     }, 5000)
 }
 
@@ -123,7 +129,7 @@ mv.app.clickAutoImg = function () {
     for (var i = 0; i < oLi.length; i++) {
         oLi[i].index = i;
         mv.tool.tab(oLi[i], function () {
-                _this = this;
+            _this = this;
                 clearInterval(list.timer);
                 this.style.transition = '1s'
                 if (this.index === oLi.length-1) {
@@ -145,17 +151,6 @@ mv.app.clickAutoImg = function () {
 
     }
 
-   /* function li(obj) {
-        var target = obj;
-        if (obj.nodeName.toLowerCase() === 'ul') return;
-        if (target.nodeName.toLowerCase() != 'li') {
-            console.log(target)
-             return li(obj.parentNode)
-        } else {
-            return target;
-        }
-    }
-*/
 }
 mv.app.moveUl = function () {
     var oUl = document.querySelector('.list');

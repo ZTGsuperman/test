@@ -82,13 +82,50 @@ body {
   z-index: 2;
   height: 5rem;
 }
+@-webkit-keyframes move {
+  0% {
+    -webkit-transform: translateY(0px);
+  }
+  100% {
+    -webkit-transform: translateY(-15px);
+  }
+}
+.logo {
+  padding: 0.83333333rem 0 0 0.5rem;
+  box-sizing: border-box;
+}
+.logo span {
+  float: left;
+  font-size: 0.8rem;
+  -webkit-animation-play-state: running;
+}
+.logo span:nth-of-type(1) {
+  color: #C06;
+  -webkit-animation: 1s move alternate infinite;
+}
+.logo span:nth-of-type(2) {
+  color: #3CF;
+  -webkit-animation: 1s 0.2s move alternate infinite;
+}
+.logo span:nth-of-type(3) {
+  color: #C6C;
+  -webkit-animation: 1s 0.4s move alternate infinite;
+}
+.logo span:nth-of-type(4) {
+  color: #369;
+  -webkit-animation: 1s 0.6s move alternate infinite;
+}
+.logo span:nth-of-type(5) {
+  color: #6F9;
+  -webkit-animation: 1s 0.8s move alternate infinite;
+}
 #box header .delta {
   width: 0;
   height: 0;
   border: 12rem solid;
   border-color: #000 transparent transparent transparent;
   display: block;
-  transform: translateY(-20rem) rotateZ(-135deg);
+  transform: translateY(-22.4rem) rotateZ(-135deg);
 }
 #box header .github {
   display: block;
@@ -270,19 +307,19 @@ footer .delta {
   border: 12rem solid;
   border-color: transparent transparent #000 transparent;
   display: block;
-  transform: translateY(1rem) translateX(-13.33333333rem) rotateZ(-135deg);
+  transform: translateY(1.5rem) translateX(-13.33333333rem) rotateZ(-135deg);
 }
 footer .bottom {
   position: relative;
 }
 footer .myName {
-  width: 2.66666667rem;
-  height: 2.66666667rem;
+  width: 2.33333333rem;
+  height: 2.33333333rem;
   border: #cccccc solid 0.06666667rem;
   transform: rotate(45deg);
   display: block;
   text-align: center;
-  line-height: 2.66666667rem;
+  line-height: 2.33333333rem;
   position: absolute;
   top: 0.66666667rem;
   left: 0.66666667rem;
