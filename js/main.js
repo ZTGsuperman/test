@@ -1,251 +1,167 @@
 // JavaScript source code
 
 
-window.onload = function () {
+var isPc = false;
 
-    var box = document.getElementById('box');
-    var list = box.querySelector('.list');
-    var oLi = list.getElementsByTagName('li');
-    var iLength = oLi.length;
-
-    css(list,'width',iLength*oLi[0].offsetWidth)
-
-    for (var i = 0; i < iLength; i++) {
-        css(oLi[i],'translateX',i*oLi[0].offsetWidth)
+function isPhone() {
+    try {
+        document.createEvent('TouchEvent');
+        return true;
+    } catch (e) {
+        return false;
     }
-
-    mv.tool.autoChange(list,'x',0)
-    mv.app.clickNav();
-    mv.app.clickAutoImg();
-   // mv.app.moveUl();
 }
-var mv = {};
-mv.tool = {}
-mv.app = {}
 
-mv.tool.autoChange = function (obj, dir, now) {
-    var el = obj.children;
-    var length = el.length;
+isPc = isPhone();
 
-    var num = now;
-    var num2 = now;
-    var off = true;
-    var offset = {
-        x: 'offsetWidth',
-        y: 'offsetHeight',
+Event = isPc ? 'mousedown' : 'touchstart';
+console.log(Event)
+
+var arr=[1,3,5,7,9,11,13,11,9,7,5,3,1]
+var oSence = document.querySelector('.sence');
+var oBox = oSence.querySelector('.box');
+var oUl = oBox.getElementsByTagName('ul')[0];
+var aLi = oUl.getElementsByTagName('li');
+
+
+
+var circleArr = [];          //要实现这个规律[1,3,5,7,9,11,9,7,5,3,1]
+var angleX = 0;
+
+setInterval(function () {
+    angleX++;
+    oBox.style.transform = 'rotateY(' + angleX + 'deg)'
+}, 60)
+
+
+    var s = document.querySelector('.item').getElementsByTagName('p')[0].innerHTML;
+
+    var theta = 0;   //每一层与圆心的夹角，第一层与最后一层算一层
+    var phi = 0;
+    var r = 150
+    var layer = 0;
+    var wordNum = -1;
+    for (var i = 4; i < 13; i++) {
+        num = i * i + (i + 1) * (i + 1);      //按规律依次增大数值   1+3+5+7+9=16=4*4   11+9+7+5+3+1 =25=5*5   但是只显示 41个字
+        if (num >= s.length) {                //当增大的数值大于设置的文字长度时
+            layer = (i - 1) * 2 + 1;          //层数，当num值大于输入的文字长度后说明，i层数打了，减小一层，(1,3,5,7,9)*2对称的层数一样，再加上中间层
+            break;
+        }
+        layer = (i - 1) * 2 + 1;
     }
-    var translate = {
-        x: 'translateX',
-        y: 'translateY',
-    }
-    clearInterval(obj.timer)
 
-    var moveDis = 0;
-
-    moveDis = (dir === 'x') ? el[0].offsetWidth : el[0].offsetHeight;
-    obj.timer = setInterval(function () {
-        if (num === length - 1) {
-            el[0].style.transition = 'none';
-            css(el[0], translate[dir], length * moveDis);
-            num = 0;
-            off = true;
+    for (var i = 0; i < layer; i++) {
+        if (i < (layer + 1) / 2) {               //层数加1成偶数再除以2就相当于取1,3,5,7,9,11前五层,到了第六层后就到了后半部分9,7,5,3,1
+            wordNum += 2;
         } else {
+            wordNum -= 2;
+        }
+        circleArr.push(wordNum)
+    }
+    // console.log(circleArr)                [1, 3, 5, 7, 9, 11, 13, 15, 13, 11, 9, 7, 5, 3, 1] 
+
+    theta = Math.PI / (circleArr.length - 1);   //每一层与圆心的夹角，第一层与最后一层算一层
+
+    num = 0;
+    for (var i = 0; i < circleArr.length; i++) {         //循环多少层
+        phi = Math.PI * 2 / circleArr[i]                  //每一层里的文字平分360度
+        for (var j = 0; j < circleArr[i]; j++) {            //每一层包含多少个文字/li
+            var li = document.createElement('li');
+            li.innerHTML = s[num];
             num++;
-            el[0].style.transition = '1s';
+            drawCircle(li, theta, phi, i, j);
+            oUl.appendChild(li);
         }
-        num2++;
-        css(obj, translate[dir], -num2 * moveDis);
-        obj.style.transition = '0.6s';
-        if (num === 0) {
-            obj.addEventListener('webkitTransitionEnd', function () {
-                if (off) {
-                    off = false;
-                    console.log(num)
-                    obj.style.transition = '0s';
-                    css(el[0], translate[dir], 0);
-                    css(obj, translate[dir], 0);
-                    num2 = 0;
-                }
-            })
-        }
-    }, 5000)
-}
-
-mv.app.clickNav = function () {
-    var menu = document.getElementById('menu');
-    var menuList = menu.querySelector('#menu_list');
-    var a = menuList.getElementsByTagName('a');
-    var home = menu.querySelector('#home');
-    var r = -80;
-    var aLength=a.length
-
-    var btnOff = true;
-
-    home.addEventListener("touchstart", function () {
-        if (btnOff) {
-            css(this, 'rotate', 720);
-            for (var i = 0; i < aLength; i++) {
-                var dis = getXY(90 / (aLength - 1) * i, r);
-                a[i].style.transition = '0.5s ' + i * 0.1 + 's';
-                css(a[i], 'rotate', 720)
-                a[i].style.left = dis.x + 'px';
-                a[i].style.top = dis.y + 'px';
-            }
-
-        } else {
-            css(this, 'rotate', 0);
-            for (var i = 0; i < aLength; i++) {
-                a[i].style.transition = '0.8s ' + -i * 0.05 + 's';
-                css(a[i], 'rotate', 0);
-                a[i].style.left = 0 + 'px';
-                a[i].style.top =0 + 'px';
-            }
-        }
-        btnOff = !btnOff;
-    })
-   
-    for (var i = 0; i < aLength; i++) {
-        a[i].addEventListener('touchstart', function () {
-            this.style.transition = '0.2s ease-in'
-            css(this, 'scale', 130);
-        })
-        a[i].addEventListener('touchend', function () {
-            this.style.transition = '0.2s ease-out'
-            css(this, 'scale', 100);
-        })
     }
 
-    function getXY(iDeg, iRadius) {
-        return { x: Math.sin(iDeg * Math.PI / 180) * iRadius, y: Math.cos(iDeg * Math.PI / 180) * iRadius };
-    }
-}
-mv.app.clickAutoImg = function () {
-    var list = document.querySelector('.list');
-    var oLi = list.getElementsByTagName('li');
-    var three = list.querySelector('.weather_word')
-
-    var ischange = true;
-    var _this = null;
-    for (var i = 0; i < oLi.length; i++) {
-        oLi[i].index = i;
-        mv.tool.tab(oLi[i], function () {
-            _this = this;
-                clearInterval(list.timer);
-                this.style.transition = '1s'
-                if (this.index === oLi.length-1) {
-                    three.style.transform = 'rotateZ(45deg) translateZ(100px) scale(1)';
-                    setTimeout(function () {
-                        three.style.transform = 'rotateZ(45deg) translateZ(100px) scale(0)';
-                    }, 3000)
-                } else {
-                    css(this, 'rotateY', 180);
-                    setTimeout(function () {
-                        css(_this, 'rotateY', 0);
-                    }, 3000)
-                }
-
-                setTimeout(function () {
-                    mv.tool.autoChange(list, 'x', _this.index)
-                }, 4000)
-        })
-
+    for (var i = 0; i < aLi.length; i++) {
+        aLi[i].style.transform = 'translate3D(' + aLi[i].circleX + 'px,' + aLi[i].circleY + 'px,'
+            + aLi[i].circleZ + 'px) rotateY(' + aLi[i].criclePhi + 'rad) rotateX(' + aLi[i].cricleTheta + 'rad) '
     }
 
+    //获取li的位置，
+    function drawCircle(obj, theta, phi, i, j) {
+        obj.circleX = r * Math.sin(theta * i) * Math.sin(phi * j) + 200;     //加200是单纯是将球移动一下
+        obj.circleY = -r * Math.cos(theta * i) + 200;                     //负号：是因为构建圆的时候默认从底部开始，这样文字就是从上面开始
+        obj.circleZ = r * Math.sin(theta * i) * Math.cos(phi * j);
+
+        obj.bigCircleX = (r + 1000) * Math.sin(theta * i) * Math.sin(phi * j) + 200;     //加200是单纯是将球移动一下
+        obj.bigCircleY = -(r + 1000) * Math.cos(theta * i) + 200;                     //负号：是因为构建圆的时候默认从底部开始，这样文字就是从上面开始
+        obj.bigCircleZ = (r + 1000) * Math.sin(theta * i) * Math.cos(phi * j);
+
+        obj.cricleTheta = theta * (circleArr.length - i) - Math.PI / 2;     //文字偏转角度，相对于每一层圆中心，因为上面改变了方向。所以层的方向也改变了，先从高层开始
+        obj.criclePhi = phi * j;                                                         // 每一个文字相对于球中心
+
+
 }
-mv.app.moveUl = function () {
-    var oUl = document.querySelector('.list');
-    var oLi = oUl.getElementsByTagName('li')
-    var liW = oLi[0].offsetWidth;
-    var iLength = oLi.length;
-    var lastPoint = 0;
-    var dis = 0;
-    var index = 0;
-    var startL = 0;
-    var startPoint = 0;
-    oUl.addEventListener('touchstart', function (ev) {
-        var touch = ev.changedTouches[0];
-        var target = ev.srcElement || target;
-        index = li(target).index;
-        lastPoint = touch.pageX;
-        clearInterval(oUl.timer);
-        startY = touch.pageY;
-        startL = css(oUl, 'translateX');
-        oUl.style.transition = oUl.style.webkitTransition = 'none';
-    })
-    oUl.addEventListener('touchmove', function (ev) {
-        var touch = ev.changedTouches[0];
-        var nowPonit = touch.pageX;
-        var nowY = touch.pageY;
 
-        dis = nowPonit - lastPoint;
-        var target = dis + css(oUl, 'translateX');
-        if (target > 0) {
-            target = 0;
-        } else if (target < -(oUl.offsetWidth - liW)) {
-            target = -(oUl.offsetWidth - liW);
+        var item = document.querySelector('.item')
+        var close = item.querySelector('.close')
 
-        }
-        if (nowY - startY < 10) {
-            css(oUl, 'translateX', target);
-        }
+        var open = document.querySelector('.open')
+        var myDo = document.querySelector('.myDo')
+        var oP = document.querySelector('.item').getElementsByTagName('p')[0];
 
-        lastPoint = nowPonit;
-    })
-    oUl.addEventListener('touchend', function (ev) {
-        var touch = ev.changedTouches[0];
-        var endY = touch.pageY;
-        var endL = css(oUl, 'translateX');
-        var moveX = Math.abs(endL - startL);
-        if (dis < 0 && moveX > 20) {
-            index++;
-            index = Math.min(iLength - 1, index);
-        } else if (dis > 0 && moveX > 20) {
-            index--;
-            index = Math.max(0, index);
-        }
-        oUl.style.transition = oUl.style.webkitTransition = '0.3s';
-        css(oUl, 'translateX', -index * liW);
-        if (endY - startY < 10) {
-            ev.stopPropagation();
+        var myInput = document.querySelector('.myInput')
+        var cancle = myInput.querySelector('.cancle')
+        var submit = myInput.querySelector('.submit')
+        var clearW = myInput.querySelector('.clearW')
+        var inner = myInput.querySelector('.inner');
+        
+        open.addEventListener(Event, function () {
+
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].style.transform = 'translate3D(' + aLi[i].bigCircleX + 'px,' + aLi[i].bigCircleY + 'px,'
+             + aLi[i].bigCircleZ + 'px) rotateY(' + aLi[i].criclePhi + 'rad) rotateX(' + aLi[i].cricleTheta + 'rad) ';
+            aLi[i].style.opacity = 0;
         }
 
         setTimeout(function () {
-            mv.tool.autoChange(oUl, 'x', index)
-        }, 4000)
-    })
+            item.style.transform = 'scale(1)';
+            item.style.webkitTransform = 'scale(1)';
+            item.style.opacity = 1;
+            item.style.filter = 'alpha(opacity=1)';
+        }, 600)
+     })
+      
+        close.addEventListener(Event, function () {
+            item.style.transform = 'scale(13)';
+            item.style.webkitTransform = 'scale(3)';
+            item.style.opacity = 0;
+            item.style.filter = 'alpha(opacity=0)';
+            
+            setTimeout(function () {
+                for (var i = 0; i < aLi.length; i++) {
+                    aLi[i].style.transform = 'translate3D(' + aLi[i].circleX + 'px,' + aLi[i].circleY + 'px,'
+                     + aLi[i].circleZ + 'px) rotateY(' + aLi[i].criclePhi + 'rad) rotateX(' + aLi[i].cricleTheta + 'rad) ';
+                    aLi[i].style.opacity = 1;
+                }
+            }, 600)
+        })
 
-    function li(obj) {
-        var target = obj;
-        if (obj.nodeName.toLowerCase() === 'ul') return;
-        if (target.nodeName.toLowerCase() != 'li') {
-            return li(obj.parentNode)
-        } else {
-            return target;
-        }
-    }
-}
+        myDo.addEventListener(Event, function () {
+            myInput.style.transform = 'scale(1)';
+            myInput.style.webkitTransform = 'scale(1)';
+        })
+        cancle.addEventListener(Event, function () {
+            myInput.style.transform = 'scale(0)';
+            myInput.style.webkitTransform = 'scale(0)';
+        })
 
-mv.tool.tab = function (el, fn) {
-    var startPoint = {};
-    el.addEventListener('touchstart', function (e) {
-        var touch = e.changedTouches[0];
-        startPoint = {
-            x: touch.pageX,
-            y: touch.pageY
-        }
-    });
-    el.addEventListener('touchend', function (e) {
-        var touch = e.changedTouches[0];
-        var nowPoint = {
-            x: touch.pageX,
-            y: touch.pageY
-        };
-        var dis = {
-            x: Math.abs(nowPoint.x - startPoint.x),
-            y: Math.abs(nowPoint.y - startPoint.y)
-        }
-        if (dis.x < 5 && dis.y < 5) {
-            fn.call(el, e);
-        }
-    });
-}
+        submit.addEventListener(Event, function () {
+            oP.innerHTML = inner.value;
+           s =oP.innerHTML;
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].innerHTML=s[i]
+            }
+            myInput.style.transform = 'scale(0)';
+            myInput.style.webkitTransform = 'scale(0)';
+        })
+        clearW.addEventListener(Event, function () {
+             inner.value = '';
+        })
+
+
+
+
+
