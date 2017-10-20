@@ -1,0 +1,147 @@
+﻿@r:60rem;
+
+
+*{margin:0;padding:0;}
+input,textarea{margin:0;padding:0;border:none; outline:none;}
+textarea{ resize:none; overflow:auto;}
+em{ font-style:normal;}
+img{border:0;margin:0;padding:0}
+span{margin:0;
+        padding:0}
+ul,ol{margin:0;padding:0; list-style:none;}
+h1,p,h2,h4,h3,h5,p,input,label{margin:0;padding:0; font-weight:normal;}
+a,input{-webkit-tap-highlight-color:rgba(255,0,0,0);text-decoration:none}
+img{ border:none; vertical-align:top;margin:0;padding:0;}
+html{height:100%;position:relative;}
+body{height:100%;margin:0;position:relative; 
+     background:#f2f2f4;
+     background-size:-cover;
+     font-family:Arial,"微软雅黑";color:#666;
+      -webkit-appearance: none;   
+            border-radius: 0;width:100%;
+            overflow:hidden
+          
+}
+
+
+@-webkit-keyframes load{
+    0%{
+        -webkit-transform:translateY(0px) translateZ(0.1px);
+    }
+    100%{
+         -webkit-transform:translateY(-15px) translateZ(0.1px)
+    }
+}
+
+
+.load{width:100%;height:100%;background:#000;position:fixed;z-index:5;text-align:center;transition:0.8s;
+      -webkit-animation:0.8s;
+}
+.loading{margin-top:50%;margin-left:20%}
+.load .nowNum{color:red;font-size:40/@r}
+.load span{ float:left;font-size:48/@r;-webkit-animation-play-state:running;}
+.load span:nth-of-type(1){ color:#C06;-webkit-animation:0.8s load alternate infinite}
+.load span:nth-of-type(2){ color:#3CF;-webkit-animation:0.8s .1s load alternate infinite}
+.load span:nth-of-type(3){ color:#C6C;-webkit-animation:0.8s .2s load alternate infinite}
+.load span:nth-of-type(4){ color:#369;-webkit-animation:0.8s .3s load alternate infinite}
+.load span:nth-of-type(5){ color:#6F9;-webkit-animation:0.8s .4s load alternate infinite}
+
+
+#box{width:100%;height:100%;position:relative;z-index:1;}
+#box header{width:100%;position:fixed;z-index:2;height:300/@r}
+
+@-webkit-keyframes move{
+    0%{
+        -webkit-transform:translateY(0px);
+    }
+    100%{
+         -webkit-transform:translateY(-15px)
+    }
+}
+.logo{padding:50/@r 0 0 30/@r;box-sizing:border-box}
+.logo span{ float:left;font-size:48/@r;-webkit-animation-play-state:running;}
+.logo span:nth-of-type(1){ color:#C06;-webkit-animation:1s move alternate infinite}
+.logo span:nth-of-type(2){ color:#3CF;-webkit-animation:1s .2s move alternate infinite}
+.logo span:nth-of-type(3){ color:#C6C;-webkit-animation:1s .4s move alternate infinite}
+.logo span:nth-of-type(4){ color:#369;-webkit-animation:1s .6s move alternate infinite}
+.logo span:nth-of-type(5){ color:#6F9;-webkit-animation:1s .8s move alternate infinite}
+
+#box header .delta{width:0;height:0;border:12rem solid;border-color:#000 transparent transparent transparent;display:block;
+                   transform:translateY(-24.4rem) rotateZ(-135deg)
+}
+#box header .github{display:block;width:400/@r;height:50/@r;background:#ec7500;text-align:center;line-height:50/@r;
+                    color:#fff;font-size:34/@r;box-shadow:0 0/@r 30/@r 5/@r #c6c6c8;transform:rotateZ(45deg);position:absolute;
+                    right:-120/@r;top:70/@r
+}
+
+#box .list{height:100%;perspective:1000px;position:absolute;z-index:1}
+#box .list li{width:12rem;position:absolute;transform-style:preserve-3d;
+          transform:rotateY(180deg);height:100%;
+          /*backface-visibility:hidden; -webkit-backface-visibility: hidden;*/
+}
+#box  .list li p{ position:absolute;top:25%;width:360/@r;height:640/@r; text-align:center;display:block;
+            backface-visibility:hidden;transform-style:preserve-3d;left:50%; 
+            margin-left:-3.5rem;backface-visibility:hidden; -webkit-backface-visibility: hidden;
+}
+#box  .list li p:nth-of-type(2){  background: #fff;
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg) rotateZ(45deg);
+            height:7rem;
+             width:7rem;
+            transform-origin:center center
+      }
+
+#box  .list li p img{width:360/@r;height:640/@r;}
+#box  .list li p .product{transform:rotateZ(-45deg);position:absolute;width:100%;height:100%;
+                top:0;left:0/@r;color:#000;text-align:center;padding:20/@r 120/@r 20/@r 80/@r;box-sizing:padding-box;
+      }
+#box  .list li p .product span{font-size:14/@r;display:block;text-align:left}
+#box  .list li p .product span em{color:#2b89b4}
+#box  .list li p .link{position:absolute;bottom:150/@r;font-size:28/@r;display:block;width:150/@r;height:50/@r;
+                 text-align:center;line-height:60/@r;color:#000;border:2/@r solid #000;left:50%;margin-left:-75/@r;
+                 margin-top:40/@r
+      }
+#box .list li .weather{ perspective:1000px; backface-visibility:hidden;transition:1s}
+#box .list li .weather img{position:absolute;width:5rem;top:0;left:0;height:auto}
+#box .list li .weather .img1{ transform:rotateY(8deg) rotateX(30deg) rotateZ(-40deg) translateX(150/@r);}
+#box .list li .weather .img2{ transform:rotateY(8deg) rotateX(32deg) rotateZ(-40deg) translateX(-190/@r) translateZ(10/@r)
+                        translateY(150/@r); 
+                        width:250/@r;height:420/@r;box-shadow:-3rem 2rem 2.3rem -1rem #3d3c3c;
+}
+
+#box .list .weather_word {width:400/@r;height:400/@r;transform:rotateZ(45deg) translateZ(200/@r) scale(0);margin:360/@r auto 0;background:#fff;
+                    position:relative;transition:1s
+}
+
+#box .list .weather_word p{width:100%;height:100%;transform:rotateZ(-45deg);position:absolute;top:0.8rem;left:5rem}
+#box .list .weather_word span{color:#000;font-size:20/@r;display:block;text-align:left;}
+#box .list .weather_word span em{color:#2b89b4 }
+
+
+footer{position:fixed;width:100%;bottom:0;height:300/@r;z-index:2}
+
+
+footer .myself{color:#000;font-size:10/@r;line-height:160/@r;text-indent:40/@r}
+#menu{width:100/@r;height:100/@r; position:absolute;right:20/@r; bottom:10/@r; }
+#menu_list{height:60/@r;width:60/@r; position:absolute;margin:10/@r;border-radius:30/@r }
+#menu_list a{position:absolute;left:0;top:0;}
+#menu_list a img{height:60/@r;width:60/@r;border-radius:30/@r;}
+#home{width:100/@r;height:100/@r;background:url(../images/nav/home.png) no-repeat; border-radius:50/@r; 
+      position:absolute; left:0;top:0;transition:1s;background-size:cover
+
+}
+
+footer .delta{width:0;height:0;border:12rem solid;border-color:transparent transparent #000 transparent;display:block;
+                transform:translateY(2rem) translateX(-800/@r) rotateZ(-135deg)
+}
+footer .bottom{position:relative}
+footer .myName{width:140/@r;height:140/@r;border:#ccc solid 4/@r;transform:rotate(45deg); display:block;
+                 text-align:center;line-height:140/@r;position:absolute;top:80/@r;left:40/@r
+}
+footer .myName em{ transform:rotate(-45deg);display:block;color:yellow;font-size:70/@r;
+                   font-weight:bold
+}
+
+
+
+

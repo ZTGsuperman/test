@@ -1,0 +1,109 @@
+@r:60rem;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+input,
+textarea {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+textarea {
+  resize: none;
+  overflow: auto;
+}
+em {
+  font-style: normal;
+}
+img {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+span {
+  margin: 0;
+  padding: 0;
+}
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+h1,
+p,
+h2,
+h4,
+h3,
+h5,
+p,
+input,
+label {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+a,
+input {
+  -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+  text-decoration: none;
+}
+img {
+  border: none;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+}
+html {
+  height: 100%;
+  position: relative;
+}
+body {
+  height: 100%;
+  margin: 0;
+  position: relative;
+  background: #ccc;
+  font-family: Arial, "微软雅黑";
+  color: #666;
+  -webkit-appearance: none;
+  border-radius: 0;
+  width: 100%;
+}
+
+
+#box{position:relative;width:100%;height:100%;overflow:hidden;}
+
+header{position:fixed;width:100%;height:140/@r;z-index:2;background:#000;}
+header .name{width:220/@r;height:220/@r;background:#000;transform:rotate(-45deg);margin:0 auto;text-align:center;}
+header .name span{color:#fff;font-size:120/@r;transform:rotate(45deg);display:block;
+                  font-weight:bold;position:absolute;left:50/@r;top:70/@r
+
+}
+ header .github{display:block;width:400/@r;height:50/@r;background:#ec7500;text-align:center;line-height:50/@r;
+                    color:#fff;font-size:34/@r;box-shadow:0 0/@r 30/@r 5/@r #c6c6c8;transform:rotateZ(45deg);position:absolute;
+                    right:-120/@r;top:70/@r;
+}
+
+
+ .list{ position:absolute;width:100%;padding:0 12/@r;z-index:1;box-sizing:border-box;top:140/@r;bottom:110/@r}
+ .list ul{ position:relative;width:100%;margin:0 auto}
+ .list ul li{width:100%;height:350/@r; margin-bottom:24/@r;overflow:hidden
+ }
+ .list ul li:nth-of-type(1){background:url(../images/hero.png) no-repeat; background-size:cover;}
+ .list ul li:nth-of-type(2){background:url(../images/clip.png) no-repeat; background-size:100% 350/@r;}
+.list ul li:nth-of-type(3){background:url(../images/bok.png) no-repeat; background-size:cover;}
+
+footer{position:fixed;width:100%;bottom:0;height:110/@r;z-index:2;background:#fff}
+footer .myself{color:#000;font-size:10/@r;line-height:160/@r;text-indent:40/@r}
+#menu{width:100/@r;height:100/@r; position:absolute;right:20/@r; bottom:10/@r; }
+#menu_list{height:60/@r;width:60/@r; position:absolute;margin:10/@r;border-radius:30/@r }
+#menu_list a{position:absolute;left:0;top:0;}
+#menu_list a img{height:60/@r;width:60/@r;border-radius:30/@r;}
+#home{width:100/@r;height:100/@r;background:url(../images/nav/home.png) no-repeat; border-radius:50/@r; 
+      position:absolute; left:0;top:0;transition:1s;background-size:cover
+
+}
+

@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <link href="css/main.css"  rel="stylesheet" />
+    <title></title>
+    <script>
+        (function () {
+            setRem()
+            window.addEventListener("orientation" in window ? "deviceorientation" : "resize", setRem);
+            function setRem() {
+                var html = document.documentElement;
+                var htmlW = html.getBoundingClientRect().width;
+                html.style.fontSize = htmlW / 15 + 'px';
+            }
+        })()
+        document.addEventListener('touchstart', function (ev) {
+            ev.preventDefault();
+        })
+
+    </script>
+    <script src="js/m.Tween.js"></script>
+    <script src="js/main.js"></script>
+
+</head>
+<body>
+    
+    <div id="box">
+        <section class="page welcome">
+            <span>welcome to my house !</span>
+        </section>
+        <section class="page pageOne">
+            <p class="title">
+                <span>PERSONAL</span>
+                <span>INFORMATION</span>
+            </p>
+
+            <div class="inner">
+                <div class="myself">
+                    <img src="image/myself.jpg" alt="pic" />
+                </div>
+
+                <div class="message">
+                    <strong>前端开发工程师</strong>
+                    <div class="about_me">
+                        <p class="left">
+                            <span>武汉纺织大学</span>
+                            <span>机械类</span>
+                            <span>本科</span>
+                        </p>
+                        <p class="right">
+                            <span>贵州遵义</span>
+                            <span>13971526493</span>
+                            <span>1193315416@qq.com</span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="page pageTwo">
+            <header>专业技能介绍</header>
+            <ul class="my_skill">
+                <li>
+                    <h5>html/css</h5>
+                    <span class="rect">
+                        <em class="num">0%</em>
+                    </span>
+
+                </li>
+                <li>
+                    <h5>js/jquery</h5>
+                    <span class="rect">
+                        <em class="num">0%</em>
+                    </span>
+                </li>
+                <li>
+                    <h5>html5</h5>
+                    <span class="rect">
+                        <em class="num">0%</em>
+                    </span>
+                </li>
+                <li>
+                    <h5>css3</h5>
+                    <span class="rect">
+                        <em class="num">0%</em>
+                    </span>
+                </li>
+                <li>
+                    <h5>移动端</h5>
+                    <span class="rect">
+                        <em class="num">0%</em>
+                    </span>
+                </li>
+                <li>
+                    <h5>ps</h5>
+                    <span class="rect">
+                        <em class="num">0%</em>
+                    </span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="page pageThree">
+            <div class="nature">
+                <h5>性格优势</h5>
+                <span>开朗</span>
+                <span>沉稳</span>
+                <span>思维全面</span>
+                <span>换位思考</span>
+                <span>责任心强</span>
+            </div>
+            <div class="favor">
+                <h5>兴趣爱好</h5>
+                <span>竹笛</span>
+                <span>网球</span>
+                <span>健身</span>
+            </div>
+        </section>
+   </div>
+</body>
+</html>

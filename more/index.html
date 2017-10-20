@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+     <link href="css/main.css" rel="stylesheet" />
+     <title></title>
+    <script src="js/m.Tween.js"></script>
+    <script>
+        (function () {
+            setRem()
+            window.addEventListener("orientation" in window ? "deviceorientation" : "resize", setRem);
+            function setRem() {
+                var html = document.documentElement;
+                var htmlW = html.getBoundingClientRect().width;
+                html.style.fontSize = htmlW / 12 + 'px';
+            }
+        })()
+
+        document.addEventListener('touchstart', function (ev) {
+            ev.preventDefault();
+        })
+    </script>
+    
+</head>
+<body>
+    <div id="box">
+        <header>
+            <p class="name"><span>Z</span></p>
+            <a href="https://github.com/ZTGsuperman" class="github">my github</a>
+        </header>
+
+        <div class="list">
+              <ul>
+                  <li><a href="https://ztgsuperman.github.io/hero/index.html
+"></a></li>
+                  <li><a href="https://ztgsuperman.github.io/upImg/demo.html
+"></a></li>
+                  <li><a href="https://ztgsuperman.github.io/mybok/demo.html
+"></a></li>
+                  <li>
+                      <a href="ball/index.html
+"></a>
+                  </li>
+              </ul>
+        </div>
+
+       <footer>
+              <p class="myself">本站作者:张廷刚;一个积极向上的有梦青年</p>
+               <div id="menu">
+                   <div id="menu_list">
+                       <a href="../myMessage/index.html"><img src="images/nav/prev.png" alt="" /></a>
+                       <a href="index.html"><img src="images/nav/open.png" alt="" /></a>
+                       <a href="../index.html"><img src="images/nav/clos.png" alt="" /></a>
+                   </div>
+                   <div id="home"></div>
+               </div>
+       </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
